@@ -30,6 +30,11 @@ namespace Objects
 
         public void OnGameStart()
         {
+            if (ballJoint == null) //ToDo manual listener unsubscribe?
+            {
+                return;
+            }
+
             var ball = ballJoint.connectedBody;
             Destroy(ballJoint);
 

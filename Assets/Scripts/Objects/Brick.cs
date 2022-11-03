@@ -8,8 +8,8 @@ namespace Objects
     [DisallowMultipleComponent]
     public class Brick : MonoBehaviour, IDamageable
     {
-        [Min(0), SerializeField] private int health;
-        private int Health
+        [Min(0), SerializeField] private float health;
+        private float Health
         {
             get => health;
             set
@@ -24,18 +24,18 @@ namespace Objects
         }
 
         private SoundManager _soundManager;
-        
+
 
         [Inject]
         private void Construct(SoundManager soundManager)
         {
             _soundManager = soundManager;
         }
-    
 
-        public void DealDamage(int damage)
+
+        public void DealDamage(float damage)
         {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
             if (damage < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(damage), "Damage cannot be negative");
