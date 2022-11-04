@@ -6,8 +6,9 @@ namespace Managers
 {
     public class InputHandler : MonoBehaviour
     {
-        [SerializeField] private UnityEvent gameStart;
-    
+        [SerializeField] private UnityEvent startGame;
+        [SerializeField] private UnityEvent restartGame;
+
         public float MoveDirection
         {
             get;
@@ -20,11 +21,15 @@ namespace Managers
             MoveDirection = value.Get<float>();
         }
 
-        private void OnStartGame(InputValue value)
+        private void OnStartGame()
         {
-            print("Game start");
-            gameStart.Invoke();
-            gameStart.RemoveAllListeners();
+            startGame.Invoke();
+            startGame.RemoveAllListeners();
+        }
+
+        private void OnRestart()
+        {
+            restartGame?.Invoke();
         }
     }
 }

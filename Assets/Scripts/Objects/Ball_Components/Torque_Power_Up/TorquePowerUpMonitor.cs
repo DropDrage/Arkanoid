@@ -1,4 +1,5 @@
 ﻿using NaughtyAttributes;
+using Objects.Ball_Components.Damage;
 using UnityEngine;
 
 namespace Objects.Ball_Components.Torque_Power_Up
@@ -9,11 +10,9 @@ namespace Objects.Ball_Components.Torque_Power_Up
         [Min(0), SerializeField] private float velocityForCharge;
         [Min(0), SerializeField] private float duration;
 
+        [Space]
         [ColorUsage(false), SerializeField] private Color torquePowerCharged;
         [SerializeField] private SpriteRenderer renderer;
-
-        private Rigidbody2D _rigidbody;
-        private DamageCalculator _damageCalculator;
 
         private TorquePowerUpNotChargedState _notChargedState;
         private TorquePowerUpChargedState _chargedState;
@@ -22,13 +21,13 @@ namespace Objects.Ball_Components.Torque_Power_Up
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
+            var rigidbody = GetComponent<Rigidbody2D>();
             var powerUp = GetComponent<TorquePowerUp>();
-            _damageCalculator = GetComponent<DamageCalculator>();
+            var damageCalculator = GetComponent<BallDamageCalculator>();
 
             _notChargedState =
-                new TorquePowerUpNotChargedState(velocityForCharge, torquePowerCharged, _rigidbody, renderer, this);
-            _chargedState = new TorquePowerUpChargedState(duration, renderer, powerUp, _damageCalculator, this);
+                new TorquePowerUpNotChargedState(velocityForCharge, torquePowerCharged, rigidbody, renderer, this);
+            _chargedState = new TorquePowerUpChargedState(duration, renderer, powerUp, damageCalculator, this);
         }
 
         private void Start()

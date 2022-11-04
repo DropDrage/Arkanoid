@@ -28,7 +28,7 @@ namespace Objects
         }
 
 
-        public void OnGameStart()
+        public void ThrowBall()
         {
             if (ballJoint == null) //ToDo manual listener unsubscribe?
             {

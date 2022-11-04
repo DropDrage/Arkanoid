@@ -15,9 +15,12 @@ GameObject:
   - component: {fileID: 1437188274174343015}
   - component: {fileID: 803070392321425343}
   - component: {fileID: 6609092908861241352}
-  - component: {fileID: 7478410916570251377}
   - component: {fileID: -8895556536175704978}
   - component: {fileID: -689364934938193228}
+  - component: {fileID: 7026348237324344546}
+  - component: {fileID: 7478410916570251377}
+  - component: {fileID: -7906528271291632763}
+  - component: {fileID: -8178971316635327024}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -141,7 +144,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0475b630224c112428a0ea40022e9767, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -237,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deecc7e22ff049399264d980fa96a676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpAudio: {fileID: 1437188274174343015}
+  bounceSoundPlayer: {fileID: 1437188274174343015}
 --- !u!114 &6609092908861241352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,21 +255,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 7
   maxSpeed: 20
---- !u!114 &7478410916570251377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4246253070438209940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4920c4d5d6f4d2eb888fc2ffa67d688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 20
-  maxTorqueDamage: 20
-  maxAngularVelocity: 1000
 --- !u!114 &-8895556536175704978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,5 +285,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angularVelocity: 5000
   angularVelocityAfterDeactivation: 1000
-  damage: 50
+  <Damage>k__BackingField: 50
   physicsMaterial: {fileID: 6200000, guid: c93af2f46d7c6d34999f1e57b7c6f49a, type: 2}
+--- !u!114 &7026348237324344546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246253070438209940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c72c846dcf8a42e681a6425add1e2b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7478410916570251377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246253070438209940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4920c4d5d6f4d2eb888fc2ffa67d688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHitDamageCalculator: {fileID: -7906528271291632763}
+  defaultTorqueDamageCalculator: {fileID: -8178971316635327024}
+--- !u!114 &-7906528271291632763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246253070438209940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a955decd85d4dc2a17df59ae2f5b3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 20
+--- !u!114 &-8178971316635327024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246253070438209940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d946433b2ca54a55987f7b9a105d50f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTorqueDamage: 20
+  maxAngularVelocity: 1000

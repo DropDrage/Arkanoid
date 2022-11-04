@@ -193,12 +193,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55141045bf7b46ac96d7364deca6bb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStart:
+  startGame:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1128505584}
-        m_TargetAssemblyTypeName: Platform, Assembly-CSharp
-        m_MethodName: OnGameStart
+        m_TargetAssemblyTypeName: Objects.Platform, Scripts
+        m_MethodName: ThrowBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  restartGame:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1892546600}
+        m_TargetAssemblyTypeName: Managers.GameManager, Scripts
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -645,6 +660,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
   m_PrefabInstance: {fileID: 4734540223030924649}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &677344810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677344800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea96ca2c0a84d40bad04086fd8b5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drop: {fileID: 1858179387384664184, guid: eaa2140dd6734ec42a8074c2408eb6f3, type: 3}
 --- !u!1 &786473538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4734540222943912309, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
@@ -1189,22 +1217,6 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6107892235590500414, guid: 320142f7b9b09ba4db282a7e6d957ebd, type: 3}
-      propertyPath: m_Constraints
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107892235590500414, guid: 320142f7b9b09ba4db282a7e6d957ebd, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107892235590500414, guid: 320142f7b9b09ba4db282a7e6d957ebd, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107892235590500414, guid: 320142f7b9b09ba4db282a7e6d957ebd, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 320142f7b9b09ba4db282a7e6d957ebd, type: 3}
 --- !u!1001 &1668638499
@@ -1622,7 +1634,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1892546600}
         m_TargetAssemblyTypeName: Managers.GameManager, Assembly-CSharp
-        m_MethodName: OnBallFellOut
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1678,7 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickDestroy: {fileID: 8300000, guid: e5ba12fdf28295f44bc170fe0a69bd4f, type: 3}
-  powerUpActivationSound: {fileID: 0}
+  powerUpActivationSound: {fileID: 8300000, guid: 44f13875741a3064cb5980c5db0b87a4, type: 3}
   powerUpDisableSound: {fileID: 0}
 --- !u!82 &2070471721
 AudioSource:
@@ -1899,6 +1911,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 957296686}
     m_Modifications:
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 677344810}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Drop
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Objects.BonusDropper, Scripts
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912308, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_Color.b
       value: 1

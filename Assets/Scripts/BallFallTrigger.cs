@@ -9,7 +9,7 @@ public class BallFallTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<Ball>(out _))
+        if (other.TryGetComponent<OnBounceSoundPlayer>(out _))
         {
             ballFellOut.Invoke();
         }

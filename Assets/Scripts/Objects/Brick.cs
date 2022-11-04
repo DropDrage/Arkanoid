@@ -1,6 +1,7 @@
 ﻿using System;
 using Managers;
 using UnityEngine;
+using UnityEngine.Events;
 using VContainer;
 
 namespace Objects
@@ -17,11 +18,15 @@ namespace Objects
                 health = value;
                 if (health <= 0)
                 {
+                    destroy.Invoke();
                     Destroy(gameObject);
                     _soundManager.PlayBrickDestroySound();
                 }
             }
         }
+
+        [SerializeField] private UnityEvent destroy;
+
 
         private SoundManager _soundManager;
 

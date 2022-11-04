@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using JetBrains.Annotations;
+using Managers;
 using UnityEngine;
 using VContainer;
 
@@ -9,7 +10,11 @@ namespace Objects.Ball_Components.Torque_Power_Up
     {
         [Min(0f), SerializeField] private float angularVelocity;
         [SerializeField] private float angularVelocityAfterDeactivation;
-        [Min(0f), SerializeField] private float damage;
+
+        [field: Space]
+        [field: Min(0f)]
+        [field: SerializeField]
+        public float Damage { get; [UsedImplicitly] private set; }
 
         [SerializeField] private PhysicsMaterial2D physicsMaterial;
 
@@ -17,8 +22,6 @@ namespace Objects.Ball_Components.Torque_Power_Up
         private Rigidbody2D _rigidbody;
 
         private PhysicsMaterial2D _materialBeforePowerUp;
-
-        public float Damage => damage;
 
 
         [Inject]
@@ -45,7 +48,7 @@ namespace Objects.Ball_Components.Torque_Power_Up
         private void OnDisable()
         {
             _rigidbody.sharedMaterial = _materialBeforePowerUp;
-            _rigidbody.angularVelocity = 1000;
+            _rigidbody.angularVelocity = angularVelocityAfterDeactivation;
             _soundManager.PlayPowerUpDeactivationSound();
         }
 

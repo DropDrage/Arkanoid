@@ -5,7 +5,7 @@ namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
-        public void OnBallFellOut()
+        public void RestartLevel()
         {
             SceneManager.LoadScene(0);
         }
