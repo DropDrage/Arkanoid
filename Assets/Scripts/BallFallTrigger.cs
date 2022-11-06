@@ -1,4 +1,4 @@
-﻿using Objects.Ball_Components;
+﻿using Objects.Ball;
 using UnityEngine;
 using UnityEngine.Events;
 
