@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 7642727047880464560}
   - component: {fileID: 4506530541228513632}
   - component: {fileID: 2588942869432553368}
-  - component: {fileID: 5736423952052052549}
-  m_Layer: 0
-  m_Name: Wide Platform Bonus
+  m_Layer: 9
+  m_Name: Bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,20 +81,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &5736423952052052549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858179387384664184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 669fe0b9a209409bac214d38398a5b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: -400924822, guid: 0d818341433b7d24099fdf782677d393, type: 3}
-  colliderWidth: 2.333333
 --- !u!1 &2330256430600465637
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -400924822, guid: 0d818341433b7d24099fdf782677d393, type: 3}
+  m_Sprite: {fileID: -181063005, guid: 5ad320b06c7dd3c4dbd6ed6739053abf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

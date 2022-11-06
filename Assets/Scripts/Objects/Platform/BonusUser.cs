@@ -9,7 +9,7 @@ namespace Objects.Platform
         {
             if (other.TryGetComponent<BasePlatformBonus>(out var platformBonus))
             {
-                platformBonus.UseBonus(gameObject);
+                platformBonus.Use(gameObject);
             }
         }
     }

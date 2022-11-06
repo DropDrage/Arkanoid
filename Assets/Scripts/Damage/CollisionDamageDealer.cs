@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Objects.Ball.Damage
+namespace Damage
 {
     [RequireComponent(typeof(IDamageCalculator))]
-    public class DamageDealer : MonoBehaviour
+    public class CollisionDamageDealer : MonoBehaviour
     {
         private IDamageCalculator _damageCalculator;
 

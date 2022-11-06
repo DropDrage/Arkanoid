@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 433171346}
   - component: {fileID: 433171345}
   - component: {fileID: 433171344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
   m_PrefabInstance: {fileID: 4734540223030924649}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &677344810
+--- !u!114 &677344815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea96ca2c0a84d40bad04086fd8b5b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drop: {fileID: 1858179387384664184, guid: eaa2140dd6734ec42a8074c2408eb6f3, type: 3}
+  bonus: {fileID: 8658109186517859830, guid: 799ac59e74b7e324a8962b62ccd593c3, type: 3}
 --- !u!1 &786473538 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4734540222943912309, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
@@ -758,6 +758,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
   m_PrefabInstance: {fileID: 1774953778}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1027092569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027092563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea96ca2c0a84d40bad04086fd8b5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonus: {fileID: 5619110171464300883, guid: e288c54f6c7c0bf44af7179d2d55060e, type: 3}
 --- !u!1 &1029052746
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +782,7 @@ GameObject:
   - component: {fileID: 1029052749}
   - component: {fileID: 1029052748}
   - component: {fileID: 1029052747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,6 +1343,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 957296686}
     m_Modifications:
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1027092569}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Drop
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Objects.Brick.BonusDropper, Scripts
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912309, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_Name
       value: Block (4)
@@ -1559,7 +1600,7 @@ GameObject:
   - component: {fileID: 1990164105}
   - component: {fileID: 1990164106}
   - component: {fileID: 1990164107}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bottom Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1823,9 +1864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94964ebd969b40d7b55a2fe139e9b409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.4}
-  transform: {fileID: 1128505589}
+  mainTransform: {fileID: 1128505589}
   connectedTransform: {fileID: 2126497996}
+  offset: {x: 0, y: 0.4}
 --- !u!114 &2124122193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1853,7 +1894,7 @@ GameObject:
   - component: {fileID: 2125139859}
   - component: {fileID: 2125139858}
   - component: {fileID: 2125139857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Top Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1981,7 +2022,7 @@ PrefabInstance:
     - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 677344810}
+      objectReference: {fileID: 677344815}
     - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1992,7 +2033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Objects.BonusDropper, Scripts
+      value: Objects.Brick.BonusDropper, Scripts
       objectReference: {fileID: 0}
     - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

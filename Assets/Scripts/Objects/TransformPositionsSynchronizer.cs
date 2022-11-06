@@ -5,15 +5,16 @@ namespace Objects
 {
     public class TransformPositionsSynchronizer : MonoBehaviour
     {
-        [SerializeField] private Vector2 offset;
+        [SerializeField] private Transform mainTransform;
 
-        [SerializeField] private Transform transform;
+        [Space]
         [SerializeField] private Transform connectedTransform;
+        [SerializeField] private Vector2 offset;
 
 
         private void Update()
         {
-            var newPosition = transform.position;
+            var newPosition = mainTransform.position;
             newPosition.x += offset.x;
             newPosition.y += offset.y;
 
@@ -30,7 +31,7 @@ namespace Objects
 
         private void OnDrawGizmosSelected()
         {
-            var position = transform.position;
+            var position = mainTransform.position;
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(position, 0.2f);
 

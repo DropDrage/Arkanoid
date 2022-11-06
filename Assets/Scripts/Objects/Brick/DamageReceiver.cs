@@ -1,5 +1,6 @@
 ﻿using System;
 using Managers;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer;
@@ -7,7 +8,7 @@ using VContainer;
 namespace Objects.Brick
 {
     [DisallowMultipleComponent]
-    public class Brick : MonoBehaviour, IDamageable
+    public class DamageReceiver : MonoBehaviour, IDamageable
     {
         [Min(0), SerializeField] private float health;
         private float Health
@@ -48,6 +49,13 @@ namespace Objects.Brick
 #endif
 
             Health -= damage;
+        }
+
+
+        [Button]
+        private void Kill()
+        {
+            DealDamage(health);
         }
     }
 }

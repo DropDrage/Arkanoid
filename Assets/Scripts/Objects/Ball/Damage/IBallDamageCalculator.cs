@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Damage;
+using JetBrains.Annotations;
 using Objects.Ball.Damage.Hit;
 using Objects.Ball.Damage.Torque;
 

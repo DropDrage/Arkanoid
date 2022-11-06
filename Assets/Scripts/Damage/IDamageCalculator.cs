@@ -1,4 +1,4 @@
-﻿namespace Objects.Ball.Damage
+﻿namespace Damage
 {
     public interface IDamageCalculator
     {

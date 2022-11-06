@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Objects.Platform
 {
@@ -6,6 +7,10 @@ namespace Objects.Platform
     {
         [SerializeField] private SpriteRenderer renderer;
         [SerializeField] private CapsuleCollider2D collider;
+
+        public float CurrentWidth => collider.size.x;
+
+        public event Action<float> SizeChanged;
 
 
         private void Awake()
@@ -19,6 +24,8 @@ namespace Objects.Platform
         {
             renderer.sprite = newSprite;
             collider.size = new Vector2(newWidth, collider.size.y);
+
+            SizeChanged?.Invoke(newWidth);
         }
     }
 }

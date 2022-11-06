@@ -13,7 +13,7 @@ namespace Objects.Platform.Horizontal_Mover
 
         private IdleHorizontalMoveState _idleState;
         private AccelerationMoveState _accelerationState;
-        private IHorizontalMoveState _currentState;
+        private BaseHorizontalMoveState _currentState;
 
 
         [Inject]
@@ -58,7 +58,7 @@ namespace Objects.Platform.Horizontal_Mover
             _accelerationState.HorizontalDirection = direction;
         }
 
-        private void ChangeState(IHorizontalMoveState newState)
+        private void ChangeState(BaseHorizontalMoveState newState)
         {
             _currentState = newState;
         }

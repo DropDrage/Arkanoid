@@ -4,12 +4,12 @@ namespace Objects.Brick
 {
     public class BonusDropper : MonoBehaviour
     {
-        [SerializeField] private GameObject drop;
+        [SerializeField] private GameObject bonus;
 
 
         public void Drop()
         {
-            Instantiate(drop, transform.position, Quaternion.identity);
+            Instantiate(bonus, transform.position, Quaternion.identity);
             Destroy(this);
         }
     }

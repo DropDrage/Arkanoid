@@ -4,7 +4,7 @@ namespace Objects.Bonus
 {
     public abstract class BasePlatformBonus : MonoBehaviour
     {
-        public void UseBonus(GameObject platform)
+        public void Use(GameObject platform)
         {
             ApplyBonus(platform);
             Destroy(gameObject);
