@@ -21,7 +21,7 @@ namespace Objects.Brick
                 {
                     destroy.Invoke();
                     Destroy(gameObject);
-                    _soundManager.PlayBrickDestroySound();
+                    _oneShotSoundsPlayer.PlayBrickDestroySound();
                 }
             }
         }
@@ -29,13 +29,13 @@ namespace Objects.Brick
         [SerializeField] private UnityEvent destroy;
 
 
-        private SoundManager _soundManager;
+        private OneShotSoundsPlayer _oneShotSoundsPlayer;
 
 
         [Inject]
-        private void Construct(SoundManager soundManager)
+        private void Construct(OneShotSoundsPlayer oneShotSoundsPlayer)
         {
-            _soundManager = soundManager;
+            _oneShotSoundsPlayer = oneShotSoundsPlayer;
         }
 
 

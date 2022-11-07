@@ -3,14 +3,14 @@
 namespace Managers
 {
     [RequireComponent(typeof(AudioSource))]
-    public class SoundManager : MonoBehaviour
+    public class OneShotSoundsPlayer : MonoBehaviour
     {
-        [Header("Brick")]
         [SerializeField] private AudioClip brickDestroy;
+        [SerializeField] private AudioClip bonusUseSound;
 
         [Header("Torque Power Up")]
-        [SerializeField] private AudioClip powerUpActivationSound;
-        [SerializeField] private AudioClip powerUpDisableSound;
+        [SerializeField] private AudioClip torquePowerUpActivationSound;
+        [SerializeField] private AudioClip torquePowerUpDisableSound;
 
         private AudioSource _source;
 
@@ -29,12 +29,18 @@ namespace Managers
 
         public void PlayPowerUpActivationSound()
         {
-            _source.PlayOneShot(powerUpActivationSound);
+            _source.PlayOneShot(torquePowerUpActivationSound);
         }
 
         public void PlayPowerUpDeactivationSound()
         {
-            _source.PlayOneShot(powerUpDisableSound);
+            _source.PlayOneShot(torquePowerUpDisableSound);
+        }
+
+
+        public void PlayBonuseUseSound()
+        {
+            _source.PlayOneShot(bonusUseSound);
         }
     }
 }

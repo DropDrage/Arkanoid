@@ -18,16 +18,16 @@ namespace Objects.Ball.Torque_Power_Up
 
         [SerializeField] private PhysicsMaterial2D physicsMaterial;
 
-        private SoundManager _soundManager;
+        private OneShotSoundsPlayer _oneShotSoundsPlayer;
         private Rigidbody2D _rigidbody;
 
         private PhysicsMaterial2D _materialBeforePowerUp;
 
 
         [Inject]
-        private void Construct(SoundManager soundManager)
+        private void Construct(OneShotSoundsPlayer oneShotSoundsPlayer)
         {
-            _soundManager = soundManager;
+            _oneShotSoundsPlayer = oneShotSoundsPlayer;
         }
 
 
@@ -39,7 +39,7 @@ namespace Objects.Ball.Torque_Power_Up
 
         private void OnEnable()
         {
-            _soundManager.PlayPowerUpActivationSound();
+            _oneShotSoundsPlayer.PlayPowerUpActivationSound();
             _materialBeforePowerUp = _rigidbody.sharedMaterial;
             _rigidbody.sharedMaterial = physicsMaterial;
             _rigidbody.angularVelocity = angularVelocity * Mathf.Sign(_rigidbody.angularVelocity);
@@ -49,7 +49,7 @@ namespace Objects.Ball.Torque_Power_Up
         {
             _rigidbody.sharedMaterial = _materialBeforePowerUp;
             _rigidbody.angularVelocity = angularVelocityAfterDeactivation;
-            _soundManager.PlayPowerUpDeactivationSound();
+            _oneShotSoundsPlayer.PlayPowerUpDeactivationSound();
         }
 
 

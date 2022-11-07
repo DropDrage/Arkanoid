@@ -987,7 +987,7 @@ MonoBehaviour:
   - {fileID: 2126497984}
   - {fileID: 964365876}
   gameManager: {fileID: 1892546600}
-  soundManager: {fileID: 2070471720}
+  oneShotSoundsPlayer: {fileID: 2070471720}
   inputHandler: {fileID: 301291717}
 --- !u!1 &1381649567
 GameObject:
@@ -1687,7 +1687,7 @@ GameObject:
   - component: {fileID: 2070471721}
   - component: {fileID: 2070471720}
   m_Layer: 0
-  m_Name: Sound Manager
+  m_Name: One Shot Sound Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1721,8 +1721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brickDestroy: {fileID: 8300000, guid: e5ba12fdf28295f44bc170fe0a69bd4f, type: 3}
-  powerUpActivationSound: {fileID: 8300000, guid: 44f13875741a3064cb5980c5db0b87a4, type: 3}
-  powerUpDisableSound: {fileID: 0}
+  bonusUseSound: {fileID: 8300000, guid: dd562b87cccce7141a5f88e2fe0b6310, type: 3}
+  torquePowerUpActivationSound: {fileID: 8300000, guid: 44f13875741a3064cb5980c5db0b87a4, type: 3}
+  torquePowerUpDisableSound: {fileID: 0}
 --- !u!82 &2070471721
 AudioSource:
   m_ObjectHideFlags: 0

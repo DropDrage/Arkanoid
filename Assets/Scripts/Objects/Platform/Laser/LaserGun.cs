@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Objects.Platform.Laser
 {
+    [RequireComponent(typeof(AudioSource))]
     public class LaserGun : MonoBehaviour
     {
         [Min(0f), SerializeField] private float timeBetweenShots;
@@ -17,12 +18,16 @@ namespace Objects.Platform.Laser
         private Coroutine _shootCoroutine;
         private WaitForSeconds _delayBetweenShots;
 
+        private AudioSource _shoutSoundSource;
+
 
         private void Awake()
         {
             _transform = transform;
             _laserPool = new LaserPool(laserPrefab);
             _delayBetweenShots = new WaitForSeconds(timeBetweenShots);
+
+            _shoutSoundSource = GetComponent<AudioSource>();
         }
 
         private void OnEnable()
@@ -36,6 +41,7 @@ namespace Objects.Platform.Laser
             {
                 var laserObject = _laserPool.Get();
                 laserObject.transform.localPosition = _transform.TransformPoint(shootPoint);
+                _shoutSoundSource.Play();
                 yield return _delayBetweenShots;
             }
         }

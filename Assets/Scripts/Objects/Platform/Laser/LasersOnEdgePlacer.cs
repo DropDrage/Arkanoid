@@ -2,11 +2,13 @@
 
 namespace Objects.Platform.Laser
 {
+    [RequireComponent(typeof(LaserShootStarter))]
     public class LasersOnEdgePlacer : MonoBehaviour
     {
-        [SerializeField] private GameObject leftGun;
-        [SerializeField] private GameObject rightGun;
+        [SerializeField] private Transform leftGun;
+        [SerializeField] private Transform rightGun;
 
+        [Space]
         [SerializeField] private Vector2 gunOffset;
 
         private PlatformResizer _resizer;
@@ -18,15 +20,14 @@ namespace Objects.Platform.Laser
             ChangeGunsPosition(_resizer.CurrentWidth);
             _resizer.SizeChanged += ChangeGunsPosition;
 
-            leftGun.SetActive(true);
-            rightGun.SetActive(true);
+            GetComponent<LaserShootStarter>().StartShoot();
         }
 
         private void ChangeGunsPosition(float platformWidth)
         {
             var halfPlatformWidth = platformWidth / 2;
-            leftGun.transform.localPosition = new Vector2(-halfPlatformWidth + gunOffset.x, gunOffset.y);
-            rightGun.transform.localPosition = new Vector2(halfPlatformWidth - gunOffset.x, gunOffset.y);
+            leftGun.localPosition = new Vector2(-halfPlatformWidth + gunOffset.x, gunOffset.y);
+            rightGun.localPosition = new Vector2(halfPlatformWidth - gunOffset.x, gunOffset.y);
         }
 
         private void OnDestroy()
