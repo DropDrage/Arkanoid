@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using Managers;
 using NaughtyAttributes;
 using UnityEngine;
@@ -52,7 +53,8 @@ namespace Objects.Brick
         }
 
 
-        [Button]
+        [UsedImplicitly]
+        [Button(enabledMode: EButtonEnableMode.Playmode)]
         private void Kill()
         {
             DealDamage(health);

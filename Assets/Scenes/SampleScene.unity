@@ -484,9 +484,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 957296686}
     m_Modifications:
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1917515272}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Drop
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Objects.Brick.BonusDropper, Scripts
+      objectReference: {fileID: 0}
+    - target: {fileID: -4674565008528204990, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+      propertyPath: destroy.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912309, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_Name
-      value: Block (5)
+      value: Block (More Balls Bonus)
       objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_RootOrder
@@ -986,9 +1014,11 @@ MonoBehaviour:
   - {fileID: 1540529645}
   - {fileID: 2126497984}
   - {fileID: 964365876}
+  - {fileID: 1990164104}
   gameManager: {fileID: 1892546600}
   oneShotSoundsPlayer: {fileID: 2070471720}
   inputHandler: {fileID: 301291717}
+  ballsManager: {fileID: 1705064569}
 --- !u!1 &1381649567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1052,7 @@ Transform:
   - {fileID: 1892546601}
   - {fileID: 1292971963}
   - {fileID: 2124122191}
+  - {fileID: 1705064568}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1336,6 +1367,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
+--- !u!1 &1705064567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1705064568}
+  - component: {fileID: 1705064569}
+  m_Layer: 0
+  m_Name: Ball Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1705064568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705064567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1381649568}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1705064569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705064567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efb291bf7f4412eabeeb49b90bbb92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 4246253070438209940, guid: e408413ef198f8f4b958940d901d1158, type: 3}
+  ballStartVelocityOffsetAngle: 15
+  ballsMaxVelocityOffsetAngle: 180
+  firstBall: {fileID: 2126497984}
 --- !u!1001 &1774953778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1373,7 +1452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912309, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_Name
-      value: Block (4)
+      value: Block (Laser Bonus)
       objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_RootOrder
@@ -1589,6 +1668,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
   m_PrefabInstance: {fileID: 567251543}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917515272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917515266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea96ca2c0a84d40bad04086fd8b5b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonus: {fileID: 8966755163589597322, guid: b99ebb86d7d923e4ea2c4233a91be5d1, type: 3}
 --- !u!1 &1990164104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +2146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912309, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_Name
-      value: Block
+      value: Block (Wide Bonus)
       objectReference: {fileID: 0}
     - target: {fileID: 4734540222943912311, guid: b16a3f499a2f0ab40b8bc78da3021a59, type: 3}
       propertyPath: m_RootOrder

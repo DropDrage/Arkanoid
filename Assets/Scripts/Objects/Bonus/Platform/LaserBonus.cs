@@ -1,7 +1,7 @@
 ﻿using Objects.Platform.Laser;
 using UnityEngine;
 
-namespace Objects.Bonus
+namespace Objects.Bonus.Platform
 {
     public class LaserBonus : BasePlatformBonus
     {

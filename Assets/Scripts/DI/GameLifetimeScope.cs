@@ -10,6 +10,7 @@ namespace DI
         [SerializeField] private GameManager gameManager;
         [SerializeField] private OneShotSoundsPlayer oneShotSoundsPlayer;
         [SerializeField] private InputHandler inputHandler;
+        [SerializeField] private BallsManager ballsManager;
 
 
         protected override void Configure(IContainerBuilder builder)
@@ -17,6 +18,7 @@ namespace DI
             builder.RegisterComponent(gameManager);
             builder.RegisterComponent(oneShotSoundsPlayer);
             builder.RegisterComponent(inputHandler);
+            builder.RegisterComponent(ballsManager);
         }
     }
 }
