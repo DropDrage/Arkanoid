@@ -3,7 +3,7 @@
 namespace Objects.Ball
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BallModel))]
     public class SpeedLimiter : MonoBehaviour
     {
         [SerializeField] private float minSpeed;
@@ -14,7 +14,7 @@ namespace Objects.Ball
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody = GetComponent<BallModel>().Rigidbody;
         }
 
         private void OnCollisionExit2D()

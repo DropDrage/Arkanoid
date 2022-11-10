@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8289660824791258414}
   - component: {fileID: 1437188274174343015}
   - component: {fileID: 803070392321425343}
+  - component: {fileID: 1495820914154869226}
   - component: {fileID: 6609092908861241352}
   - component: {fileID: -8895556536175704978}
   - component: {fileID: -689364934938193228}
@@ -240,7 +241,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deecc7e22ff049399264d980fa96a676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballModel: {fileID: 1495820914154869226}
   bounceSoundPlayer: {fileID: 1437188274174343015}
+--- !u!114 &1495820914154869226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246253070438209940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8212552dd48b41ab8da186fc39e7f97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 8289660824791258414}
+  collider: {fileID: 6487258654430061665}
+  renderer: {fileID: 5680824927108093275}
 --- !u!114 &6609092908861241352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpeed: 7
-  maxSpeed: 17.5
+  maxSpeed: 15
 --- !u!114 &-8895556536175704978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +287,6 @@ MonoBehaviour:
   velocityForCharge: 2000
   duration: 5
   torquePowerCharged: {r: 1, g: 0.4077403, b: 0, a: 1}
-  renderer: {fileID: 5680824927108093275}
 --- !u!114 &-689364934938193228
 MonoBehaviour:
   m_ObjectHideFlags: 0

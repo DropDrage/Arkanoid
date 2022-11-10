@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Objects.Ball.Damage
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BallModel))]
     public class BallDamageCalculator : MonoBehaviour, IBallDamageCalculator
     {
-        [SerializeField] private DefaultHitDamageCalculator defaultHitDamageCalculator;
+        [SerializeField] private MassDependentHitDamageCalculator defaultHitDamageCalculator;
         [SerializeField] private DefaultTorqueDamageCalculator defaultTorqueDamageCalculator;
 
         private Rigidbody2D _rigidbody;
@@ -22,7 +22,7 @@ namespace Objects.Ball.Damage
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody = GetComponent<BallModel>().Rigidbody;
         }
 
         private void Start()

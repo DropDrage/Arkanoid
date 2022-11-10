@@ -7,8 +7,10 @@ namespace Objects.Ball.Torque_Power_Up
     public class TorquePowerUpChargedState : ITorquePowerUpMonitorState
     {
         private readonly float _duration;
+
         private readonly SpriteRenderer _renderer;
         private readonly TorquePowerUp _powerUp;
+
         private readonly IBallDamageCalculator _damageCalculator;
         private readonly ITorquePowerUpStateMachine _stateMachine;
 

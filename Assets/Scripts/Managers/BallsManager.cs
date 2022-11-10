@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using Objects.Ball;
+using Objects.Bonus.Modifier;
 using UnityEngine;
 
 namespace Managers
 {
     public class BallsManager : MonoBehaviour
     {
-        [SerializeField] private GameObject ballPrefab;
+        [SerializeField] private BallFactory ballFactory;
 
         [Space]
         [Min(0f), SerializeField] private float ballStartVelocityOffsetAngle = 30f;
         [Min(0f), SerializeField] private float ballsMaxVelocityOffsetAngle = 180f;
 
-        [SerializeField] private GameObject firstBall;
+        [SerializeField] private BallModel firstBall;
 
-        private readonly List<GameObject> _balls = new List<GameObject>(1);
+        private readonly List<BallModel> _balls = new List<BallModel>(1);
 
         private Transform _ballContainer;
 
@@ -23,7 +25,6 @@ namespace Managers
 
         private void Awake()
         {
-            _ballContainer = new GameObject("Ball Container").transform;
             _balls.Add(firstBall);
         }
 
@@ -33,7 +34,7 @@ namespace Managers
         }
 
 
-        public void AddBallsFromBall(int count, GameObject parentBall = null)
+        public void AddBallsFromBall(int count, BallModel parentBall = null)
         {
 #if UNITY_EDITOR
             if (count <= 0)
@@ -41,12 +42,16 @@ namespace Managers
                 throw new ArgumentOutOfRangeException(nameof(count), count, null);
             }
 #endif
+            if (_balls.Count == 0)
+            {
+                return;
+            }
 
-            var ball = parentBall != null ? parentBall : _balls[0];
+            var primaryBall = parentBall != null ? parentBall : _balls[0];
 
-            var ballPosition = ball.transform.position;
+            var ballPosition = primaryBall.transform.position;
 
-            var ballRigidbody = ball.GetComponent<Rigidbody2D>();
+            var ballRigidbody = primaryBall.Rigidbody;
             var ballVelocity = ballRigidbody.velocity;
             var ballAngularVelocity = ballRigidbody.angularVelocity;
 
@@ -57,25 +62,29 @@ namespace Managers
             {
                 var myAngle = angleStep * GetSwingingModifier(i);
                 var velocity = Quaternion.AngleAxis(myAngle, Vector3.back) * ballVelocity;
-                _balls.Add(CreateBall(ballPosition, velocity, ballAngularVelocity));
+                var newBallObject = ballFactory.CreateBall(ballPosition, velocity, ballAngularVelocity);
+                _balls.Add(newBallObject);
             }
         }
 
         private static int GetSwingingModifier(int i) => (i >> 1) * ((i & 1) == 0 ? 1 : -1);
 
-        private GameObject CreateBall(Vector3 position, Vector2 velocity, float angularVelocity)
-        {
-            var ballObject = Instantiate(ballPrefab, position, Quaternion.identity, _ballContainer);
-            var ballRigidbody = ballObject.GetComponent<Rigidbody2D>();
-            ballRigidbody.velocity = velocity;
-            ballRigidbody.angularVelocity = angularVelocity;
-
-            return ballObject;
-        }
 
         public void RemoveBall(GameObject ball)
         {
-            _balls.Remove(ball);
+            _balls.Remove(ball.GetComponent<BallModel>());
+            Destroy(ball);
+        }
+
+
+        public void AddModifier(BaseBallModifier modifier)
+        {
+            for (var i = 0; i < _balls.Count; i++)
+            {
+                modifier.Apply(_balls[i]);
+            }
+
+            ballFactory.AddModifier(modifier);
         }
     }
 }

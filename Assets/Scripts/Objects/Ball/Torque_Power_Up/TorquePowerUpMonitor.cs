@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Objects.Ball.Torque_Power_Up
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BallModel))]
     public class TorquePowerUpMonitor : MonoBehaviour, ITorquePowerUpStateMachine
     {
         [Min(0), SerializeField] private float velocityForCharge;
@@ -12,7 +12,6 @@ namespace Objects.Ball.Torque_Power_Up
 
         [Space]
         [ColorUsage(false), SerializeField] private Color torquePowerCharged;
-        [SerializeField] private SpriteRenderer renderer;
 
         private TorquePowerUpNotChargedState _notChargedState;
         private TorquePowerUpChargedState _chargedState;
@@ -21,7 +20,10 @@ namespace Objects.Ball.Torque_Power_Up
 
         private void Awake()
         {
-            var rigidbody = GetComponent<Rigidbody2D>();
+            var ballModel = GetComponent<BallModel>();
+            var rigidbody = ballModel.Rigidbody;
+            var renderer = ballModel.Renderer;
+
             var powerUp = GetComponent<TorquePowerUp>();
             var damageCalculator = GetComponent<BallDamageCalculator>();
 

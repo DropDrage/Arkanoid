@@ -5,7 +5,7 @@ using VContainer;
 
 namespace Objects.Ball.Torque_Power_Up
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(BallModel))]
     public class TorquePowerUp : MonoBehaviour
     {
         [Min(0f), SerializeField] private float angularVelocity;
@@ -33,7 +33,7 @@ namespace Objects.Ball.Torque_Power_Up
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
+            _rigidbody = GetComponent<BallModel>().Rigidbody;
         }
 
 

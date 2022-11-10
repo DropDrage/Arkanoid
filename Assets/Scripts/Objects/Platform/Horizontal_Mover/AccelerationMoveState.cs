@@ -14,23 +14,23 @@ namespace Objects.Platform.Horizontal_Mover
         private Vector2 _accelerationForce = Vector2.zero;
         public virtual HorizontalDirection HorizontalDirection
         {
-            set
-            {
-                var direction = value;
+            set => RecalculateAccelerationForce(value);
+        }
 
-                var accelerationForceX = _accelerationForce.x;
-                if (accelerationForceX == 0)
-                {
-                    var directionValue = (int) value;
-                    _accelerationForce = new Vector2(
-                        (_acceleration * Rigidbody.mass + _acceleration * Rigidbody.drag) * directionValue, 0
-                    );
-                }
-                else if (accelerationForceX > 0 && direction == HorizontalDirection.Left
-                    || accelerationForceX < 0 && direction == HorizontalDirection.Right)
-                {
-                    _accelerationForce.x *= -1;
-                }
+        private void RecalculateAccelerationForce(HorizontalDirection direction)
+        {
+            var accelerationForceX = _accelerationForce.x;
+            if (accelerationForceX == 0)
+            {
+                var directionValue = (int) direction;
+                _accelerationForce = new Vector2(
+                    (_acceleration * Rigidbody.mass + _acceleration * Rigidbody.drag) * directionValue, 0
+                );
+            }
+            else if (accelerationForceX > 0 && direction == HorizontalDirection.Left
+                || accelerationForceX < 0 && direction == HorizontalDirection.Right)
+            {
+                _accelerationForce.x *= -1;
             }
         }
 
