@@ -15,7 +15,7 @@ namespace Objects.Bonus.Ball
 
         protected override void ApplyBonus(BallsManager ballsManager)
         {
-            var modifier = new BigBallModifier(colliderRadius, mass, sprite);
+            var modifier = new BallSizeModifier(colliderRadius, mass, sprite);
             ballsManager.AddModifier(modifier);
         }
     }

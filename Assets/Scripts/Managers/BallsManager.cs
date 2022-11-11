@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Objects.Ball;
 using Objects.Bonus.Modifier;
 using UnityEngine;
+using UnityEngine.Events;
+using Utils;
 
 namespace Managers
 {
@@ -11,30 +13,25 @@ namespace Managers
         [SerializeField] private BallFactory ballFactory;
 
         [Space]
-        [Min(0f), SerializeField] private float ballStartVelocityOffsetAngle = 30f;
+        [Min(0f), SerializeField] private float ballStartVelocityOffsetAngle = 15f;
         [Min(0f), SerializeField] private float ballsMaxVelocityOffsetAngle = 180f;
 
-        [SerializeField] private BallModel firstBall;
+        [Space]
+        [SerializeField] private UnityEvent allBallAreDead;
 
         private readonly List<BallModel> _balls = new List<BallModel>(1);
 
         private Transform _ballContainer;
 
-        public bool IsBallLast => _balls.Count == 1;
 
-
-        private void Awake()
+        public GameObject SpawnBall()
         {
-            _balls.Add(firstBall);
+            var ballModel = ballFactory.CreateBall(Vector3.zero);
+            _balls.Add(ballModel);
+            return ballModel.gameObject;
         }
 
-        private void OnDestroy()
-        {
-            _balls.Clear();
-        }
-
-
-        public void AddBallsFromBall(int count, BallModel parentBall = null)
+        public void AddBallsFromBall(int count)
         {
 #if UNITY_EDITOR
             if (count <= 0)
@@ -42,12 +39,12 @@ namespace Managers
                 throw new ArgumentOutOfRangeException(nameof(count), count, null);
             }
 #endif
-            if (_balls.Count == 0)
+            if (_balls.IsEmpty())
             {
                 return;
             }
 
-            var primaryBall = parentBall != null ? parentBall : _balls[0];
+            var primaryBall = _balls[0];
 
             var ballPosition = primaryBall.transform.position;
 
@@ -74,6 +71,11 @@ namespace Managers
         {
             _balls.Remove(ball.GetComponent<BallModel>());
             Destroy(ball);
+
+            if (_balls.IsEmpty())
+            {
+                allBallAreDead.Invoke();
+            }
         }
 
 
@@ -85,6 +87,11 @@ namespace Managers
             }
 
             ballFactory.AddModifier(modifier);
+        }
+
+        public void ClearModifiers()
+        {
+            ballFactory.ClearModifiers();
         }
     }
 }

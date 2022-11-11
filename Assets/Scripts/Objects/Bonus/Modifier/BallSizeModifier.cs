@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Objects.Bonus.Modifier
 {
-    public class BigBallModifier : BaseBallModifier
+    public class BallSizeModifier : BaseBallModifier
     {
         private float _colliderRadius;
         private float _mass;
@@ -11,7 +11,7 @@ namespace Objects.Bonus.Modifier
         private Sprite _sprite;
 
 
-        public BigBallModifier(float colliderRadius, float mass, Sprite sprite)
+        public BallSizeModifier(float colliderRadius, float mass, Sprite sprite)
         {
             _colliderRadius = colliderRadius;
             _mass = mass;

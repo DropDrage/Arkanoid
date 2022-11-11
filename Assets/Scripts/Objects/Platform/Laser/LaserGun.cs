@@ -51,6 +51,11 @@ namespace Objects.Platform.Laser
             StopCoroutine(_shootCoroutine);
         }
 
+        private void OnDestroy()
+        {
+            _laserPool.Clear();
+        }
+
 
         private void OnDrawGizmosSelected()
         {

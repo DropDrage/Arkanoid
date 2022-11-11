@@ -9,7 +9,7 @@ namespace Objects.Ball
         [Space]
         [SerializeField] private AudioSource bounceSoundPlayer;
 
-        private BallModel _ballModel;
+        private Rigidbody2D _rigidbody;
 
         private float _initialPitch;
         private float _initialHalfMass;
@@ -19,8 +19,8 @@ namespace Objects.Ball
         private void Awake()
         {
             _initialPitch = bounceSoundPlayer.pitch;
-            _ballModel = GetComponent<BallModel>();
-            _initialHalfMass = _ballModel.Rigidbody.mass / 2;
+            _rigidbody = GetComponent<BallModel>().Rigidbody;
+            _initialHalfMass = _rigidbody.mass / 2;
         }
 
 
@@ -34,7 +34,7 @@ namespace Objects.Ball
 
         private void UpdatePitchIfMassChanged()
         {
-            var mass = _ballModel.Rigidbody.mass;
+            var mass = _rigidbody.mass;
             if (!Mathf.Approximately(_previousMass, mass))
             {
                 bounceSoundPlayer.pitch = _initialPitch / (mass / 2 + _initialHalfMass);

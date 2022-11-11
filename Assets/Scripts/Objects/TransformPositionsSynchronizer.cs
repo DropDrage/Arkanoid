@@ -22,23 +22,33 @@ namespace Objects
         }
 
 
+        public void Connect(Transform mainTransform, Transform connectedTransform)
+        {
+            this.mainTransform = mainTransform;
+            this.connectedTransform = connectedTransform;
+
+            enabled = true;
+        }
+
         public void Release()
         {
             enabled = false;
-            Destroy(this);
         }
 
 
         private void OnDrawGizmosSelected()
         {
-            var position = mainTransform.position;
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(position, 0.2f);
+            if (mainTransform != null)
+            {
+                var position = mainTransform.position;
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireSphere(position, 0.2f);
 
-            var connectedPosition = position.Add(offset);
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(position, connectedPosition);
-            Gizmos.DrawWireSphere(connectedPosition, 0.2f);
+                var connectedPosition = position.Add(offset);
+                Gizmos.color = Color.green;
+                Gizmos.DrawLine(position, connectedPosition);
+                Gizmos.DrawWireSphere(connectedPosition, 0.2f);
+            }
         }
     }
 }

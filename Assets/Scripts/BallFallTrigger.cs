@@ -1,13 +1,9 @@
 ﻿using Managers;
-using Objects.Ball;
 using UnityEngine;
-using UnityEngine.Events;
 using VContainer;
 
 public class BallFallTrigger : MonoBehaviour
 {
-    [SerializeField] private UnityEvent ballFellOut;
-
     private BallsManager _ballsManager;
 
 
@@ -18,18 +14,8 @@ public class BallFallTrigger : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (_ballsManager.IsBallLast)
-        {
-            if (other.TryGetComponent<OnBounceSoundPlayer>(out _))
-            {
-                ballFellOut.Invoke();
-            }
-        }
-        else
-        {
-            _ballsManager.RemoveBall(other.gameObject);
-        }
+        _ballsManager.RemoveBall(other.gameObject);
     }
 }

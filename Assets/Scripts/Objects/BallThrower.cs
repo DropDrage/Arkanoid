@@ -8,26 +8,28 @@ namespace Objects
 
         [SerializeField] private TransformPositionsSynchronizer ballToPlatformSynchronizer;
 
-        [Space]
-        [SerializeField] private Rigidbody2D platformRigidbody;
-        [SerializeField] private Rigidbody2D ballRigidbody;
+        private Rigidbody2D _ball;
+        private Rigidbody2D _platform;
 
+
+        public void SetPlayer(Rigidbody2D ball, Rigidbody2D platform)
+        {
+            _ball = ball;
+            _platform = platform;
+        }
 
         public void Throw()
         {
-            if (ballToPlatformSynchronizer == null) //ToDo manual listener unsubscribe?
+            if (!ballToPlatformSynchronizer.enabled)
             {
-                print("No positions synchronizer");
+                print("Ball has already been thrown");
                 return;
             }
 
             ballToPlatformSynchronizer.Release();
 
-            var ballStartForce =
-                new Vector2(platformRigidbody.velocity.x, ballLaunchForce).normalized * ballLaunchForce;
-            ballRigidbody.AddForce(ballStartForce, ForceMode2D.Impulse);
-
-            Destroy(gameObject);
+            var ballStartForce = new Vector2(_platform.velocity.x, ballLaunchForce).normalized * ballLaunchForce;
+            _ball.AddForce(ballStartForce, ForceMode2D.Impulse);
         }
     }
 }

@@ -42,5 +42,11 @@ namespace Objects.Platform.Laser
         {
             _pool.Release(laserObject);
         }
+
+        public void Clear()
+        {
+            _pool.Clear();
+            Object.Destroy(_lasersContainer.gameObject); //ToDo or don't destroy lasers?
+        }
     }
 }

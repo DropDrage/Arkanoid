@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
+using DI;
 using Objects.Ball;
 using Objects.Bonus.Modifier;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace Managers
 {
     public class BallFactory : MonoBehaviour
     {
         [SerializeField] private GameObject prefab;
+
+        [SerializeField] private GameLifetimeScope diScope;
 
         private readonly List<BaseBallModifier> _modifiers = new List<BaseBallModifier>();
 
@@ -22,7 +26,7 @@ namespace Managers
 
         public BallModel CreateBall(Vector3 position)
         {
-            var ballModel = Instantiate(prefab, position, Quaternion.identity, _ballContainer)
+            var ballModel = diScope.Container.Instantiate(prefab, position, Quaternion.identity, _ballContainer)
                 .GetComponent<BallModel>();
             ApplyModifiers(ballModel);
             return ballModel;
@@ -50,6 +54,11 @@ namespace Managers
         public void AddModifier(BaseBallModifier modifier)
         {
             _modifiers.Add(modifier);
+        }
+
+        public void ClearModifiers()
+        {
+            _modifiers.Clear();
         }
     }
 }
