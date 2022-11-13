@@ -1,28 +1,45 @@
-﻿using UnityEngine;
+﻿using System;
+using Event;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 namespace Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private LevelInitializer levelInitializer;
+        [SerializeField] private PlayerSpawner playerSpawner;
 
         [Space]
         [SerializeField] private UnityEvent beforePlayerRespawned;
 
-        private GameObject _platform;
+        [NonSerialized] public GameObject Platform;
+
+        private ISubscribable _deinitializeEvent;
 
 
-        public void Start()
+        [Inject]
+        private void Construct(IEventSubscribableProvider eventsProvider)
         {
-            SpawnPlayer();
+            _deinitializeEvent = eventsProvider.GetSubscribable(EventKeys.Deinitialize);
         }
 
-        private void SpawnPlayer()
+        private void OnEnable()
         {
-            _platform = levelInitializer.SpawnPlayer();
+            _deinitializeEvent.Subscribe(Deinitialize);
         }
+
+        private void OnDisable()
+        {
+            _deinitializeEvent.Unsubscribe(Deinitialize);
+        }
+
+        private void Deinitialize()
+        {
+            DestroyPreviousPlayer();
+        }
+
 
         public void RespawnPlayer()
         {
@@ -33,9 +50,14 @@ namespace Managers
             SpawnPlayer();
         }
 
+        private void SpawnPlayer()
+        {
+            Platform = playerSpawner.SpawnPlayer();
+        }
+
         private void DestroyPreviousPlayer()
         {
-            Destroy(_platform);
+            Destroy(Platform);
         }
 
 

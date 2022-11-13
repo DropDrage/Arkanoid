@@ -1,10 +1,10 @@
 ﻿using Managers;
-using Objects.Bonus.Modifier;
+using Objects.Bonus.Ball.Modifier;
 using UnityEngine;
 
 namespace Objects.Bonus.Ball
 {
-    public class BigBallBonus : BaseBallBonus
+    public class BallSizeBonus : BaseBallBonus
     {
         [SerializeField] private float colliderRadius;
         [SerializeField] private float mass;

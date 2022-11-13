@@ -1,6 +1,6 @@
 ﻿using Objects.Ball;
 
-namespace Objects.Bonus.Modifier
+namespace Objects.Bonus.Ball.Modifier
 {
     public abstract class BaseBallModifier
     {

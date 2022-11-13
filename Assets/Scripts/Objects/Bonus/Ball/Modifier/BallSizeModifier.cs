@@ -1,7 +1,7 @@
 ﻿using Objects.Ball;
 using UnityEngine;
 
-namespace Objects.Bonus.Modifier
+namespace Objects.Bonus.Ball.Modifier
 {
     public class BallSizeModifier : BaseBallModifier
     {

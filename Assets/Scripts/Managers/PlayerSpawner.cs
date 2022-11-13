@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace Managers
 {
-    public class LevelInitializer : MonoBehaviour
+    public class PlayerSpawner : MonoBehaviour
     {
         [Space]
         [SerializeField] private BallsManager ballsManager;

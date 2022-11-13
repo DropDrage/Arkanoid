@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using Event;
+using Managers;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -14,6 +15,14 @@ namespace DI
 
 
         protected override void Configure(IContainerBuilder builder)
+        {
+            builder.Register<EventsPublisherHolder>(Lifetime.Scoped)
+                .AsImplementedInterfaces();
+
+            RegisterManagers(builder);
+        }
+
+        private void RegisterManagers(IContainerBuilder builder)
         {
             builder.RegisterComponent(gameManager);
             builder.RegisterComponent(oneShotSoundsPlayer);

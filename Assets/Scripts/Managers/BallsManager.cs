@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Event;
 using Objects.Ball;
-using Objects.Bonus.Modifier;
+using Objects.Bonus.Ball.Modifier;
 using UnityEngine;
 using UnityEngine.Events;
 using Utils;
+using VContainer;
 
 namespace Managers
 {
@@ -22,6 +24,32 @@ namespace Managers
         private readonly List<BallModel> _balls = new List<BallModel>(1);
 
         private Transform _ballContainer;
+
+        private ISubscribable _deinitializeEvent;
+
+
+        [Inject]
+        private void Construct(IEventSubscribableProvider eventsProvider)
+        {
+            _deinitializeEvent = eventsProvider.GetSubscribable(EventKeys.Deinitialize);
+        }
+
+
+        private void OnEnable()
+        {
+            _deinitializeEvent.Subscribe(Deinitialize);
+        }
+
+        private void OnDisable()
+        {
+            _deinitializeEvent.Unsubscribe(Deinitialize);
+        }
+
+        private void Deinitialize()
+        {
+            RemoveBalls();
+            ClearModifiers();
+        }
 
 
         public GameObject SpawnBall()
@@ -76,6 +104,16 @@ namespace Managers
             {
                 allBallAreDead.Invoke();
             }
+        }
+
+        public void RemoveBalls()
+        {
+            for (int i = 0, ballsCount = _balls.Count; i < ballsCount; i++)
+            {
+                Destroy(_balls[i].gameObject);
+            }
+
+            _balls.Clear();
         }
 
 

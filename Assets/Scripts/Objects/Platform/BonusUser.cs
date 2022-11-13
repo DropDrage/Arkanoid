@@ -25,12 +25,12 @@ namespace Objects.Platform
             if (other.TryGetComponent<BasePlatformBonus>(out var platformBonus))
             {
                 platformBonus.Use(gameObject);
-                _oneShotSoundsPlayer.PlayPowerUpActivationSound();
+                _oneShotSoundsPlayer.PlayBonusUseSound();
             }
             else if (other.TryGetComponent<BaseBallBonus>(out var ballBonus))
             {
                 ballBonus.Use(_ballsManager);
-                _oneShotSoundsPlayer.PlayPowerUpActivationSound();
+                _oneShotSoundsPlayer.PlayBonusUseSound();
             }
         }
     }

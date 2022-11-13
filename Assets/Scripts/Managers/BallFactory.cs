@@ -1,21 +1,28 @@
 ﻿using System.Collections.Generic;
-using DI;
 using Objects.Ball;
-using Objects.Bonus.Modifier;
+using Objects.Bonus.Ball.Modifier;
 using UnityEngine;
+using VContainer;
 using VContainer.Unity;
 
 namespace Managers
 {
     public class BallFactory : MonoBehaviour
     {
-        [SerializeField] private GameObject prefab;
-
-        [SerializeField] private GameLifetimeScope diScope;
-
         private readonly List<BaseBallModifier> _modifiers = new List<BaseBallModifier>();
 
+        [SerializeField] private GameObject prefab;
+
         private Transform _ballContainer;
+
+        private IObjectResolver _diContainer;
+
+
+        [Inject]
+        private void Construct(IObjectResolver diContainer)
+        {
+            _diContainer = diContainer;
+        }
 
 
         private void Awake()
@@ -26,7 +33,7 @@ namespace Managers
 
         public BallModel CreateBall(Vector3 position)
         {
-            var ballModel = diScope.Container.Instantiate(prefab, position, Quaternion.identity, _ballContainer)
+            var ballModel = _diContainer.Instantiate(prefab, position, Quaternion.identity, _ballContainer)
                 .GetComponent<BallModel>();
             ApplyModifiers(ballModel);
             return ballModel;

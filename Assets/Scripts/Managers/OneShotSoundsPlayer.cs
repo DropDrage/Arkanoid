@@ -38,7 +38,7 @@ namespace Managers
         }
 
 
-        public void PlayBonuseUseSound()
+        public void PlayBonusUseSound()
         {
             _source.PlayOneShot(bonusUseSound);
         }
